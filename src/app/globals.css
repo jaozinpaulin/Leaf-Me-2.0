@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-leaf-bg: #0E110F;
+  --color-leaf-surface: #161B17;
+  --color-leaf-border: #232D24;
+  --color-leaf-text: #F4F7F4;
+  --color-leaf-muted: #98AD9E;
+  --color-leaf-accent: #7C9A82;
+  --color-leaf-earth: #B58863;
+}
+
+:root {
+  background-color: var(--color-leaf-bg);
+  color: var(--color-leaf-text);
+}
+
+body {
+  background-color: var(--color-leaf-bg);
+  color: var(--color-leaf-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, sans-serif;
+}
