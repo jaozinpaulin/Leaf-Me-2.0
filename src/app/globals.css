@@ -1,23 +1,63 @@
 @import "tailwindcss";
 
 @theme {
-  --color-leaf-bg: #0E110F;
-  --color-leaf-surface: #161B17;
-  --color-leaf-border: #232D24;
-  --color-leaf-text: #F4F7F4;
-  --color-leaf-muted: #98AD9E;
-  --color-leaf-accent: #7C9A82;
-  --color-leaf-earth: #B58863;
+  /* Colors */
+  --color-leaf-bg: #090D0B;
+  --color-leaf-surface: #111714;
+  --color-leaf-border: #24211D;
+
+  --color-leaf-text: #E3E7E1;
+  --color-leaf-muted: #8A968D;
+
+  --color-leaf-accent: #7D9A83;
+  --color-leaf-earth: #24211D;
+
+  /* Typography */
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, monospace;
 }
 
 :root {
   background-color: var(--color-leaf-bg);
   color: var(--color-leaf-text);
+  color-scheme: dark;
+}
+
+html {
+  background-color: var(--color-leaf-bg);
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
+  min-height: 100vh;
   background-color: var(--color-leaf-bg);
   color: var(--color-leaf-text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background-color: var(--color-leaf-accent);
+  color: var(--color-leaf-bg);
 }
