@@ -12,14 +12,14 @@ const kingdoms = [
         name: "Animalia",
         phrase: "Life in motion.",
         image:
-            "https://images.unsplash.com/photo-1629198735667-5d7c7f7d1a0d?auto=format&fit=crop&w=1200&q=85",
+            "/animalia.webp",
     },
     {
         number: "03",
         name: "Fungi",
         phrase: "Life beneath the surface.",
         image:
-            "https://images.unsplash.com/photo-1603616392738-5b7b5d4f3c3c?auto=format&fit=crop&w=1200&q=85",
+            "/fungi.webp",
     },
 ];
 
