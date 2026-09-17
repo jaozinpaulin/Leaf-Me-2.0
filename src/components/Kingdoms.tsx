@@ -11,17 +11,15 @@ const kingdoms = [
         number: "02",
         name: "Animalia",
         phrase: "Life in motion.",
-        description:
-            "Discover the diversity of organisms that move, adapt and inhabit our planet.",
-        image: "/animalia.webp",
+        image:
+            "https://images.unsplash.com/photo-1629198735667-5d7c7f7d1a0d?auto=format&fit=crop&w=1200&q=85",
     },
     {
         number: "03",
         name: "Fungi",
         phrase: "Life beneath the surface.",
-        description:
-            "Enter the hidden networks that connect organisms and ecosystems.",
-        image: "/fungi.webp",
+        image:
+            "https://images.unsplash.com/photo-1603616392738-5b7b5d4f3c3c?auto=format&fit=crop&w=1200&q=85",
     },
 ];
 
