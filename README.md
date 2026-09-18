@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lifme
 
-## Getting Started
+> Explore the diversity of life through science, taxonomy and biodiversity.
 
-First, run the development server:
+Lifme is a scientific web project focused on exploring the diversity of life through biological classification, species and natural ecosystems.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The project is being developed with a clean, editorial and scientific approach, combining visual exploration with structured biological information.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## About
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Lifme aims to create a digital space where users can explore different forms of life, including:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Plants
+- Animals
+- Fungi
+- Species
+- Biological kingdoms
+- Taxonomy
+- Biodiversity
 
-## Learn More
+The project is currently under development.
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Lucide React
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Design
 
-## Deploy on Vercel
+The visual identity of Lifme is inspired by scientific archives, botanical collections and natural history.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The interface focuses on:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Minimalism
+- Scientific typography
+- Dark natural tones
+- Editorial layouts
+- Botanical and biological imagery
+- Clear information hierarchy
+
+## Project Structure
+
+```text
+src/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+│
+└── components/
+    ├── Header/
+    ├── Hero/
+    ├── Kingdoms/
+    └── FeaturedSpecies/
