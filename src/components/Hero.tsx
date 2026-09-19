@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import KingdomDonut from "./KingdomDonut";
 
 
 const specimens = [
@@ -109,7 +110,7 @@ export default function Hero() {
                 </div>
 
                 <div className="order-1 lg:order-2 lg:col-span-6">
-                    <div className="relative flex aspect-[4/5] w-full items-end overflow-hidden border border-leaf-border bg-black/20">
+                    {/* <div className="relative flex aspect-[4/5] w-full items-end overflow-hidden border border-leaf-border bg-black/20">
 
                         <div className="absolute left-5 top-5 font-mono text-[9px] uppercase leading-5 tracking-[0.12em] text-leaf-text">
                             <p>Kingdom: {specimen.kingdom}</p>
@@ -134,10 +135,11 @@ export default function Hero() {
                                 {specimen.scale}
                             </span>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="mt-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
+                        <KingdomDonut />
+                        {/* <div className="flex items-center gap-3">
                             {specimens.map((item, index) => (
                                 <button
                                     key={item.kingdom}
@@ -167,7 +169,9 @@ export default function Hero() {
 
                         <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-leaf-muted">
                             Archive / 03
-                        </span>
+                        </span> */}
+
+
                     </div>
                 </div>
 
