@@ -2,17 +2,10 @@
 
 import { useEffect, useState } from "react";
 
+
 const specimens = [
     {
-        image: "/logoHero.webp",
-        kingdom: "Plantae",
-        division: "Tracheophyta",
-        species: "Adiantum pedatum",
-        scale: "100 μm",
-        catalog: "2026.09 — TR",
-    },
-    {
-        image: "/animalia.webp",
+        video: "/videos/ani4.mp4",
         kingdom: "Animalia",
         division: "Chordata",
         species: "Specimen Archive",
@@ -20,7 +13,15 @@ const specimens = [
         catalog: "2026.09 — AN",
     },
     {
-        image: "/fungi.webp",
+        video: "/videos/flo1.mp4",
+        kingdom: "Plantae",
+        division: "Tracheophyta",
+        species: "Adiantum pedatum",
+        scale: "100 μm",
+        catalog: "2026.09 — TR",
+    },
+    {
+        video: "/videos/flo2.mp4",
         kingdom: "Fungi",
         division: "Basidiomycota",
         species: "Specimen Archive",
@@ -31,7 +32,6 @@ const specimens = [
 
 export default function Hero() {
     const [activeIndex, setActiveIndex] = useState(0);
-
     const specimen = specimens[activeIndex];
 
     useEffect(() => {
@@ -43,8 +43,20 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="min-h-[calc(100vh-5rem)] bg-leaf-bg text-leaf-text">
-            <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-14 lg:grid-cols-12 lg:gap-8 lg:px-10">
+        <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden bg-leaf-bg text-leaf-text">
+            <video
+                key={specimen.video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 h-full w-full object-cover"
+                src={specimen.video}
+            />
+
+            <div className="absolute inset-0 bg-black/55" />
+
+            <div className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-14 lg:grid-cols-12 lg:gap-8 lg:px-10">
 
                 <div className="order-2 lg:order-1 lg:col-span-3">
                     <div className="flex items-center gap-3">
@@ -97,13 +109,7 @@ export default function Hero() {
                 </div>
 
                 <div className="order-1 lg:order-2 lg:col-span-6">
-                    <div className="relative aspect-[4/5] w-full overflow-hidden border border-leaf-border bg-leaf-surface">
-                        <img
-                            key={specimen.image}
-                            src={specimen.image}
-                            alt={`${specimen.kingdom} specimen`}
-                            className="absolute inset-0 h-full w-full object-cover"
-                        />
+                    <div className="relative flex aspect-[4/5] w-full items-end overflow-hidden border border-leaf-border bg-black/20">
 
                         <div className="absolute left-5 top-5 font-mono text-[9px] uppercase leading-5 tracking-[0.12em] text-leaf-text">
                             <p>Kingdom: {specimen.kingdom}</p>
@@ -141,17 +147,17 @@ export default function Hero() {
                                     className="flex items-center gap-2"
                                 >
                                     <span
-                                        className={`h-px transition-all duration-300 ${index === activeIndex
+                                        className={`h - px transition - all duration - 300 ${index === activeIndex
                                             ? "w-10 bg-leaf-accent"
                                             : "w-4 bg-leaf-border"
-                                            }`}
+                                            } `}
                                     />
 
                                     <span
-                                        className={`font-mono  transition-colors duration-300 text-[8px] ${index === activeIndex
+                                        className={`font - mono text - [8px] transition - colors duration - 300 ${index === activeIndex
                                             ? "text-leaf-text"
                                             : "text-leaf-muted"
-                                            }`}
+                                            } `}
                                     >
                                         0{index + 1}
                                     </span>
@@ -192,7 +198,9 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     );
 }
+
