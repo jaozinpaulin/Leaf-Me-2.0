@@ -70,20 +70,20 @@ export default function KingdomDonut({ kingActive }: KingdomDonutProps) {
                 </svg>
 
                 <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center z-10">
-                    <span className="font-mono text-[11px] tracking-[0.25em] text-zinc-400">
+                    {/* <span className="font-mono text-[11px] tracking-[0.25em] text-zinc-400">
                         0{activeIndex + 1} / 03
-                    </span>
+                    </span> */}
 
                     <span className="mt-2 font-serif text-2xl font-medium tracking-wide text-zinc-100 transition-all duration-500">
                         {activeKingdom.name}
                     </span>
 
-                    <span
+                    {/* <span
                         className="mt-2 font-mono text-[9px] uppercase tracking-[0.3em] transition-colors duration-500"
                         style={{ color: activeKingdom.color }}
                     >
                         Kingdom Survey
-                    </span>
+                    </span> */}
                 </div>
             </div>
         </div>
