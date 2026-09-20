@@ -2,11 +2,22 @@
 
 import { useEffect, useState } from "react";
 import KingdomDonut from "./KingdomDonut";
+export type KingdomType = "0" | "1" | "2";
 
+interface Speci {
+    id: KingdomType;
+    video: string;
+    kingdom: string;
+    division: string;
+    species: string;
+    scale: string;
+    catalog: string;
+}
 
-const specimens = [
+const specimens: Speci[] = [
     {
-        video: "/videos/ani4.mp4",
+        id: "0",
+        video: "/videos/animalia1.mp4",
         kingdom: "Animalia",
         division: "Chordata",
         species: "Specimen Archive",
@@ -14,7 +25,8 @@ const specimens = [
         catalog: "2026.09 — AN",
     },
     {
-        video: "/videos/flo1.mp4",
+        id: "1",
+        video: "/videos/flora1.mp4",
         kingdom: "Plantae",
         division: "Tracheophyta",
         species: "Adiantum pedatum",
@@ -22,7 +34,35 @@ const specimens = [
         catalog: "2026.09 — TR",
     },
     {
-        video: "/videos/flo2.mp4",
+        id: "2",
+        video: "/videos/fungi1.mp4",
+        kingdom: "Fungi",
+        division: "Basidiomycota",
+        species: "Specimen Archive",
+        scale: "—",
+        catalog: "2026.09 — FU",
+    },
+    {
+        id: "0",
+        video: "/videos/animalia2.mp4",
+        kingdom: "Animalia",
+        division: "Chordata",
+        species: "Specimen Archive",
+        scale: "—",
+        catalog: "2026.09 — AN",
+    },
+    {
+        id: "1",
+        video: "/videos/flora2.mp4",
+        kingdom: "Plantae",
+        division: "Tracheophyta",
+        species: "Adiantum pedatum",
+        scale: "100 μm",
+        catalog: "2026.09 — TR",
+    },
+    {
+        id: "2",
+        video: "/videos/fungi2.mp4",
         kingdom: "Fungi",
         division: "Basidiomycota",
         species: "Specimen Archive",
@@ -30,7 +70,6 @@ const specimens = [
         catalog: "2026.09 — FU",
     },
 ];
-
 export default function Hero() {
     const [activeIndex, setActiveIndex] = useState(0);
     const specimen = specimens[activeIndex];
@@ -42,6 +81,7 @@ export default function Hero() {
 
         return () => clearInterval(interval);
     }, []);
+
 
     return (
         <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden bg-leaf-bg text-leaf-text">
@@ -138,7 +178,8 @@ export default function Hero() {
                     </div> */}
 
                     <div className="mt-4 flex items-center justify-between">
-                        <KingdomDonut />
+                        <KingdomDonut kingActive={specimen.id} />
+
                         {/* <div className="flex items-center gap-3">
                             {specimens.map((item, index) => (
                                 <button
