@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import FeaturedSpecies from "@/components/FeaturedSpecies";
 import ExploreLife from "@/components/ExploreLife";
 import About from "@/components/About";
-import TestGbifPage from "@/components/TestGbifPage";
 
 export default function Home() {
   return (
@@ -18,7 +17,6 @@ export default function Home() {
       <FeaturedSpecies />
       <About />
       <Footer />
-      <TestGbifPage />
     </main>
   );
 }

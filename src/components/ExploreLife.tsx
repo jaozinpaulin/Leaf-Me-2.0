@@ -1,37 +1,26 @@
-const specimens = [
-    {
-        name: "Adiantum pedatum",
-        kingdom: "Plantae",
-        image: "/plantae.webp",
-    },
-    {
-        name: "Panthera leo",
-        kingdom: "Animalia",
-        image: "/animalia.webp",
-    },
-    {
-        name: "Mycena sp.",
-        kingdom: "Fungi",
-        image: "/fungi.webp",
-    },
-    {
-        name: "Adiantum pedatum",
-        kingdom: "Plantae",
-        image: "/plantae.webp",
-    },
-    {
-        name: "Panthera leo",
-        kingdom: "Animalia",
-        image: "/animalia.webp",
-    },
-    {
-        name: "Mycena sp.",
-        kingdom: "Fungi",
-        image: "/fungi.webp",
-    },
-];
+// @ts-nocheck
+//tem que remover isso aqui dps dos testes
 
-export default function ExploreLife() {
+import { useGbif } from "@/hooks/useBbif";
+
+
+export default async function ExploreLife() {
+    const { getPlantaeSpecimens } = useGbif();
+
+    const data = await getPlantaeSpecimens();
+
+    const specimens = data.map((item: any) => {
+        const image = item.media?.find(
+            (media: any) => media.type === "StillImage"
+        )?.identifier;
+
+        return {
+            name: item.scientificName,
+            kingdom: item.kingdom,
+            image,
+        };
+    });
+
     return (
         <section className="border-t border-leaf-border px-6 py-24 md:px-10">
             <div className="mx-auto max-w-6xl">
@@ -57,11 +46,17 @@ export default function ExploreLife() {
                             className="group overflow-hidden border border-leaf-border bg-leaf-surface"
                         >
                             <div className="aspect-[4/3] overflow-hidden">
-                                <img
-                                    src={specimen.image}
-                                    alt={specimen.name}
-                                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                />
+                                {specimen.image ? (
+                                    <img
+                                        src={specimen.image}
+                                        alt={specimen.name}
+                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                ) : (
+                                    <div className="flex h-full items-center justify-center text-xs text-leaf-muted">
+                                        No image
+                                    </div>
+                                )}
                             </div>
 
                             <div className="p-5">
