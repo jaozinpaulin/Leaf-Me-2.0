@@ -1,11 +1,12 @@
 // @ts-nocheck
-//tem que remover isso aqui dps dos testes
+// remover depois dos testes
+
+"use client";
 
 import { useGbif } from "@/hooks/useBbif";
 
-
 export default async function ExploreLife() {
-    const { getPlantaeSpecimens } = useGbif();
+    const { getPlantaeSpecimens, getAnimaliaSpecimens, getFungiSpecimens, } = useGbif();
 
     const data = await getPlantaeSpecimens();
 
@@ -51,6 +52,9 @@ export default async function ExploreLife() {
                                         src={specimen.image}
                                         alt={specimen.name}
                                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        onError={(event) => {
+                                            event.currentTarget.style.display = "none";
+                                        }}
                                     />
                                 ) : (
                                     <div className="flex h-full items-center justify-center text-xs text-leaf-muted">
