@@ -1,83 +1,30 @@
-"use client"
+"use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const specimens = [
-    {
-        number: "01",
-        kingdom: "Plantae",
-        species: "Adiantum pedatum",
-        classification: "Tracheophyta",
-        image: "/plantae.webp",
-    },
-    {
-        number: "02",
-        kingdom: "Animalia",
-        species: "Specimen Archive",
-        classification: "Chordata",
-        image: "/animalia.webp",
-    },
-    {
-        number: "03",
-        kingdom: "Fungi",
-        species: "Specimen Archive",
-        classification: "Basidiomycota",
-        image: "/fungi.webp",
-    },
-    {
-        number: "03",
-        kingdom: "Fungi",
-        species: "Specimen Archive",
-        classification: "Basidiomycota",
-        image: "/fungi.webp",
-    },
-    {
-        number: "03",
-        kingdom: "Fungi",
-        species: "Specimen Archive",
-        classification: "Basidiomycota",
-        image: "/fungi.webp",
-    },
-    {
-        number: "03",
-        kingdom: "Fungi",
-        species: "Specimen Archive",
-        classification: "Basidiomycota",
-        image: "/fungi.webp",
-    },
-    {
-        number: "03",
-        kingdom: "Fungi",
-        species: "Specimen Archive",
-        classification: "Basidiomycota",
-        image: "/fungi.webp",
-    },
-    {
-        number: "03",
-        kingdom: "Fungi",
-        species: "Specimen Archive",
-        classification: "Basidiomycota",
-        image: "/fungi.webp",
-    },
-    {
-        number: "03",
-        kingdom: "Fungi",
-        species: "Specimen Archive",
-        classification: "Basidiomycota",
-        image: "/fungi.webp",
-    },
-    {
-        number: "03",
-        kingdom: "Fungi",
-        species: "Specimen Archive",
-        classification: "Basidiomycota",
-        image: "/fungi.webp",
-    },
-];
+import { useGbif } from "@/hooks/useBbif";
 
 export default function FeaturedSpecies() {
     const scrollRef = useRef<HTMLDivElement>(null);
+
+    const { getPlantaeSpecimens } = useGbif();
+
+    const [specimens, setSpecimens] = useState<any[]>([]);
+
+    useEffect(() => {
+        async function loadSpecimens() {
+            try {
+                const data = await getPlantaeSpecimens();
+
+                setSpecimens(data);
+            } catch (error) {
+                console.error("Failed to load Plantae specimens:", error);
+            }
+        }
+
+        loadSpecimens();
+    }, []);
 
     function scroll(direction: "left" | "right") {
         if (!scrollRef.current) return;
@@ -86,8 +33,7 @@ export default function FeaturedSpecies() {
             left: direction === "right" ? 300 : -300,
             behavior: "smooth",
         });
-    };
-
+    }
 
     return (
         <section className="border-b border-leaf-border bg-leaf-bg text-leaf-text">
@@ -115,36 +61,52 @@ export default function FeaturedSpecies() {
                         <ChevronLeft size={24} strokeWidth={1.5} />
                     </button>
 
-                    <div ref={scrollRef}
-                        className="flex items-center gap-8 overflow-x-auto scrollbar-none">
-                        {specimens.map((specimen) => (
-                            <article
-                                key={specimen.number}
-                                className="shrink-0 text-center p-2 border border-leaf-border">
-                                <div className="mx-auto w-full max-w-[220px]">
-                                    <div className="aspect-square overflow-hidden">
-                                        <img
-                                            src={specimen.image}
-                                            alt={specimen.species}
-                                            className="h-full w-full object-cover"
-                                        />
+                    <div
+                        ref={scrollRef}
+                        className="flex items-center gap-8 overflow-x-auto scrollbar-none"
+                    >
+                        {specimens.map((specimen, index) => {
+                            const image = specimen.media?.find(
+                                (media: any) =>
+                                    media.type === "StillImage"
+                            )?.identifier;
+
+                            return (
+                                <article
+                                    key={specimen.key}
+                                    className="shrink-0 text-center p-2 border border-leaf-border"
+                                >
+                                    <div className="mx-auto w-full max-w-[220px]">
+                                        <div className="aspect-square overflow-hidden">
+                                            {image && (
+                                                <img
+                                                    src={image}
+                                                    alt={
+                                                        specimen.scientificName
+                                                    }
+                                                    className="h-full w-full object-cover"
+                                                />
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
 
-                                <span className="mt-5 block font-mono text-[8px] uppercase tracking-[0.15em] text-leaf-accent">
-                                    {specimen.number} / {specimen.kingdom}
-                                </span>
+                                    <span className="mt-5 block font-mono text-[8px] uppercase tracking-[0.15em] text-leaf-accent">
+                                        {String(index + 1).padStart(2, "0")} /{" "}
+                                        {specimen.kingdom}
+                                    </span>
 
-                                <h3 className="mt-2 font-display text-xl italic">
-                                    {specimen.species}
-                                </h3>
+                                    <h3 className="mt-2 font-display text-xl italic">
+                                        {specimen.scientificName}
+                                    </h3>
 
-                                <span className="mt-2 block font-mono text-[8px] uppercase tracking-[0.12em] text-leaf-muted">
-                                    {specimen.classification}
-                                </span>
-                            </article>
-                        ))}
+                                    <span className="mt-2 block font-mono text-[8px] uppercase tracking-[0.12em] text-leaf-muted">
+                                        {specimen.phylum ?? "Plantae"}
+                                    </span>
+                                </article>
+                            );
+                        })}
                     </div>
+
                     <button
                         onClick={() => scroll("right")}
                         aria-label="Next specimens"
@@ -153,7 +115,6 @@ export default function FeaturedSpecies() {
                         <ChevronRight size={24} strokeWidth={1.5} />
                     </button>
                 </div>
-
             </div>
         </section>
     );
