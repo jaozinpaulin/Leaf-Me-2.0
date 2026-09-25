@@ -56,7 +56,7 @@ export default function FeaturedSpecies() {
                     <button
                         onClick={() => scroll("left")}
                         aria-label="Previous specimens"
-                        className="absolute left-4 top-1/2 z-10 -translate-y-1/2 border border-leaf-border bg-leaf-surface p-3 text-leaf-text transition-colors hover:text-leaf-accent"
+                        className="absolute left-4 top-1/2 z-10  hidden sm:block  -translate-y-1/2 border border-leaf-border bg-leaf-surface p-3 text-leaf-text transition-colors hover:text-leaf-accent"
                     >
                         <ChevronLeft size={24} strokeWidth={1.5} />
                     </button>
@@ -110,7 +110,7 @@ export default function FeaturedSpecies() {
                     <button
                         onClick={() => scroll("right")}
                         aria-label="Next specimens"
-                        className="absolute right-4 top-1/2 z-10 -translate-y-1/2 border border-leaf-border bg-leaf-surface p-3 text-leaf-text transition-colors hover:text-leaf-accent"
+                        className="absolute right-4 top-1/2 z-10 hidden sm:block -translate-y-1/2 border border-leaf-border bg-leaf-surface p-3 text-leaf-text transition-colors hover:text-leaf-accent"
                     >
                         <ChevronRight size={24} strokeWidth={1.5} />
                     </button>
