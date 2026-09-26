@@ -116,7 +116,7 @@ export default function Hero() {
                 </div>
 
                 <div className="lg:col-span-6 flex flex-col items-center justify-center w-full">
-                    <div className="flex items-center justify-center w-full p-6 rounded-2xl border border-leaf-border/30 bg-leaf-surface/10 backdrop-blur-sm">
+                    <div className="flex items-center justify-center ">
                         <KingdomDonut kingActive={specimen.id} />
                     </div>
                 </div>
