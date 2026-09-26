@@ -1,53 +1,54 @@
+const kingdomsOverview = [
+    { name: "Plantae", code: "01", desc: "Life rooted in place." },
+    { name: "Animalia", code: "02", desc: "Life in motion." },
+    { name: "Fungi", code: "03", desc: "Life beneath the surface." },
+];
+
 export default function About() {
     return (
-        <section className="border-t border-leaf-border px-6 py-24 md:px-10">
-            <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-2 md:items-center">
-                <div>
-                    <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-leaf-accent">
+        <section className="border-t border-leaf-border/30 bg-leaf-bg text-leaf-text px-6 py-24 md:px-10">
+            <div className="mx-auto max-w-5xl">
+
+                <div className="mb-14">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-leaf-accent">
                         About Lifme
-                    </p>
-
-                    <h2 className="font-display text-3xl tracking-tight text-leaf-text md:text-4xl">
-                        A living archive of biodiversity.
+                    </span>
+                    <h2 className="mt-3 font-display text-2xl sm:text-3xl tracking-tight text-leaf-text">
+                        An archive dedicated to the diversity of life.
                     </h2>
-
-                    <p className="mt-6 max-w-lg text-sm leading-7 text-leaf-muted">
-                        Lifme is a scientific exploration of life on Earth, bringing
-                        together taxonomy, biodiversity and visual research in one place.
-                    </p>
-
-                    <p className="mt-4 max-w-lg text-sm leading-7 text-leaf-muted">
-                        The project explores the diversity of living organisms through
-                        scientific information, classification and curated specimens.
-                    </p>
                 </div>
 
-                <div className="border border-leaf-border bg-leaf-surface p-6 md:p-8">
-                    <p className="mb-8 font-mono text-[10px] uppercase tracking-[0.18em] text-leaf-muted">
-                        Life classification
-                    </p>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
 
-                    <div className="space-y-5 font-mono text-xs">
-                        <div className="flex items-center gap-4">
-                            <span className="text-leaf-muted">01</span>
-                            <span className="text-leaf-text">LIFE</span>
-                        </div>
+                    <div className="md:col-span-7 space-y-4 text-sm leading-6 text-leaf-muted">
+                        <p>
+                            <strong className="text-leaf-text font-medium">Lifme</strong> is a digital sanctuary and scientific platform created to explore, categorize, and preserve global biodiversity registries.
+                        </p>
+                        <p>
+                            By integrating modern web design with botanical and zoological taxonomy, the platform maps the delicate relationships that shape terrestrial ecosystems across the primary biological lineages.
+                        </p>
+                    </div>
 
-                        <div className="ml-6 flex items-center gap-4 border-l border-leaf-border pl-5">
-                            <span className="text-leaf-muted">02</span>
-                            <span className="text-leaf-text">KINGDOMS</span>
-                        </div>
+                    <div className="md:col-span-5 border border-leaf-border/30 bg-leaf-surface/20 p-6">
+                        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-leaf-muted block mb-4">
+                            Biological Lineages
+                        </span>
 
-                        <div className="ml-12 flex items-center gap-4 border-l border-leaf-border pl-5">
-                            <span className="text-leaf-muted">03</span>
-                            <span className="text-leaf-text">SPECIES</span>
-                        </div>
-
-                        <div className="ml-18 flex items-center gap-4 border-l border-leaf-border pl-5">
-                            <span className="text-leaf-muted">04</span>
-                            <span className="text-leaf-accent">DISCOVERY</span>
+                        <div className="space-y-4">
+                            {kingdomsOverview.map((item) => (
+                                <div key={item.name} className="flex items-center justify-between border-b border-leaf-border/20 pb-3 last:border-none last:pb-0">
+                                    <div className="relative">
+                                        <span className="absolute top-0 -left-3 font-mono text-[8px] text-leaf-accent mr-2">{item.code}</span>
+                                        <span className="font-display italic text-base text-leaf-text">{item.name}</span>
+                                    </div>
+                                    <span className="font-mono text-[8px] uppercase text-leaf-muted/70 tracking-wider">
+                                        {item.desc}
+                                    </span>
+                                </div>
+                            ))}
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
