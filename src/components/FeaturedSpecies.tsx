@@ -30,40 +30,37 @@ export default function FeaturedSpecies() {
         if (!scrollRef.current) return;
 
         scrollRef.current.scrollBy({
-            left: direction === "right" ? 300 : -300,
+            left: direction === "right" ? 340 : -340,
             behavior: "smooth",
         });
     }
 
     return (
-        <section className="border-b border-leaf-border bg-leaf-bg text-leaf-text">
-            <div className="px-4 py-16 lg:px-6 lg:py-20">
+        <section className="border-b border-leaf-border/40 bg-leaf-bg text-leaf-text overflow-hidden">
+            <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
                 <div className="text-center">
-                    <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-leaf-accent">
-                        Archive / Specimens
-                    </span>
 
-                    <h2 className="mt-4 font-display text-4xl sm:text-5xl">
+                    <h2 className="mt-4 font-display text-4xl sm:text-5xl tracking-tight">
                         Featured species.
                     </h2>
 
                     <p className="mx-auto mt-4 max-w-md text-xs leading-6 text-leaf-muted">
-                        Selected specimens from the living archive.
+                        Selected specimens from the living archive, cataloged with botanical precision.
                     </p>
                 </div>
 
-                <div className="relative mt-14">
+                <div className="relative mt-14 group/carousel">
                     <button
                         onClick={() => scroll("left")}
                         aria-label="Previous specimens"
-                        className="absolute left-4 top-1/2 z-10  hidden sm:block  -translate-y-1/2 border border-leaf-border bg-leaf-surface p-3 text-leaf-text transition-colors hover:text-leaf-accent"
+                        className="absolute -left-5 top-1/2 z-10 hidden sm:flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-leaf-border/40 bg-leaf-surface/80 backdrop-blur-md text-leaf-text transition-all hover:border-leaf-border hover:scale-105"
                     >
-                        <ChevronLeft size={24} strokeWidth={1.5} />
+                        <ChevronLeft size={18} strokeWidth={1.5} />
                     </button>
 
                     <div
                         ref={scrollRef}
-                        className="flex items-center gap-8 overflow-x-auto scrollbar-none"
+                        className="flex items-stretch gap-6 overflow-x-auto scrollbar-none pb-4 px-2"
                     >
                         {specimens.map((specimen, index) => {
                             const image = specimen.media?.find(
@@ -74,33 +71,36 @@ export default function FeaturedSpecies() {
                             return (
                                 <article
                                     key={specimen.key}
-                                    className="shrink-0 text-center p-2 border border-leaf-border"
+                                    className="shrink-0 w-[260px] flex flex-col justify-between p-4 border border-leaf-border/30 bg-leaf-surface/20 transition-all duration-300 hover:border-leaf-border/70 hover:bg-leaf-surface/40 rounded-xl"
                                 >
-                                    <div className="mx-auto w-full max-w-[220px]">
-                                        <div className="aspect-square overflow-hidden">
-                                            {image && (
+                                    <div>
+                                        <div className="aspect-square overflow-hidden bg-black/40 border rounded-xl border-leaf-border/30 mb-4 relative">
+                                            {image ? (
                                                 <img
                                                     src={image}
                                                     alt={
                                                         specimen.scientificName
                                                     }
-                                                    className="h-full w-full object-cover"
+                                                    className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
                                                 />
+                                            ) : (
+                                                <div className="flex h-full items-center justify-center font-mono text-xs uppercase tracking-widest text-leaf-muted">
+                                                    No image
+                                                </div>
                                             )}
                                         </div>
+
+                                        <span className="block font-mono text-[8px] uppercase tracking-[0.15em] text-leaf-accent">
+                                            {specimen.kingdom || "Plantae"}
+                                        </span>
+
+                                        <h3 className="mt-2 font-display text-lg italic text-leaf-text">
+                                            {specimen.scientificName}
+                                        </h3>
                                     </div>
 
-                                    <span className="mt-5 block font-mono text-[8px] uppercase tracking-[0.15em] text-leaf-accent">
-                                        {String(index + 1).padStart(2, "0")} /{" "}
-                                        {specimen.kingdom}
-                                    </span>
-
-                                    <h3 className="mt-2 font-display text-xl italic">
-                                        {specimen.scientificName}
-                                    </h3>
-
-                                    <span className="mt-2 block font-mono text-[8px] uppercase tracking-[0.12em] text-leaf-muted">
-                                        {specimen.phylum ?? "Plantae"}
+                                    <span className="mt-4 block font-mono text-[8px] uppercase tracking-[0.12em] text-leaf-muted/80 border-t border-leaf-border/30 pt-3 truncate">
+                                        Family: {specimen.family ?? "N/A"}
                                     </span>
                                 </article>
                             );
@@ -110,9 +110,9 @@ export default function FeaturedSpecies() {
                     <button
                         onClick={() => scroll("right")}
                         aria-label="Next specimens"
-                        className="absolute right-4 top-1/2 z-10 hidden sm:block -translate-y-1/2 border border-leaf-border bg-leaf-surface p-3 text-leaf-text transition-colors hover:text-leaf-accent"
+                        className="absolute -right-5 top-1/2 z-10 hidden sm:flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-leaf-border/40 bg-leaf-surface/80 backdrop-blur-md text-leaf-text transition-all hover:border-leaf-border hover:scale-105"
                     >
-                        <ChevronRight size={24} strokeWidth={1.5} />
+                        <ChevronRight size={18} strokeWidth={1.5} />
                     </button>
                 </div>
             </div>
