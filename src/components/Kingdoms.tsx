@@ -55,7 +55,7 @@ export default function Kingdoms() {
                 <div className="mt-14 border-t border-leaf-border">
                     {kingdoms.map((kingdom, index) => (
                         <article key={kingdom.name}
-                            className={`grid grid-cols-1 gap-8 border-b border-leaf-border py-8 lg:grid-cols-12 lg:items-center lg:gap-12 lg:py-10 ${index === 0 ? "lg:py-12" : ""
+                            className={`grid grid-cols-1  gap-8 border-b border-leaf-border py-8 lg:grid-cols-12 lg:items-center lg:gap-12 lg:py-10 ${index === 0 ? "lg:py-12" : ""
                                 }`}>
                             <div
                                 className={`lg:col-span-4 ${index === 1 ? "lg:order-2" : ""
@@ -95,10 +95,10 @@ export default function Kingdoms() {
                                 </div>
                             </div>
 
-                            <div className={`lg:col-span-8 ${index === 1 ? "lg:order-1" : ""}`}>
+                            <div className={`lg:col-span-8  ${index === 1 ? "lg:order-1" : ""}`}>
                                 <Link
                                     href={`/kingdoms/${kingdom.slug}`}
-                                    className="group relative block aspect-[16/7] overflow-hidden border border-leaf-border">
+                                    className="group relative rounded-xl block aspect-[16/7] overflow-hidden border border-leaf-border">
                                     <Image
                                         src={kingdom.image}
                                         alt={kingdom.name}

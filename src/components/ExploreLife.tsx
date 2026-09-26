@@ -47,13 +47,10 @@ export default function ExploreLife() {
                                     : "lg:translate-y-0";
 
                         return (
-                            <article
-                                key={specimen.key}
-                                className={`group relative flex flex-col justify-between overflow-hidden border border-leaf-border/30 bg-leaf-surface/20 p-5 transition-all duration-300 hover:border-leaf-border hover:bg-leaf-surface/40 ${offsetStyle}`}
+                            <article key={specimen.key}
+                                className={`group relative flex flex-col justify-between overflow-hidden border rounded-xl border-leaf-border/30 bg-leaf-surface/20 p-5 transition-all duration-300 hover:border-leaf-border hover:bg-leaf-surface/40 ${offsetStyle}`}
                             >
-
-
-                                <div className="aspect-[4/3] overflow-hidden bg-black/40 border border-leaf-border/30 relative mb-5">
+                                <div className="aspect-[4/3] overflow-hidden bg-black/40 border border-leaf-border/30 relative rounded-xl mb-5">
                                     {image ? (
                                         <img
                                             src={image}
