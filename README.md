@@ -1,10 +1,24 @@
-# Lifme
+# Lifme 🌿
 
 > Explore the diversity of life through science, taxonomy and biodiversity.
 
 Lifme is a scientific web project focused on exploring the diversity of life through biological classification, species and natural ecosystems.
 
 The project is being developed with a clean, editorial and scientific approach, combining visual exploration with structured biological information.
+
+---
+
+## 📸 Preview da Interface
+
+|             Visão Geral (Hero)              |            Reinos Biológicos             |
+| :-----------------------------------------: | :--------------------------------------: |
+| ![Hero Section](public/imgProject/hero.png) | ![Kingdoms](public/imgProject/kings.png) |
+
+|               Reino Plantae               |              Reino Fungi              |
+| :---------------------------------------: | :-----------------------------------: |
+| ![Plantae](public/imgProject/plantae.png) | ![Fungi](public/imgProject/fungi.png) |
+
+---
 
 ## About
 
@@ -40,18 +54,3 @@ The interface focuses on:
 - Editorial layouts
 - Botanical and biological imagery
 - Clear information hierarchy
-
-## Project Structure
-
-```text
-src/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── globals.css
-│
-└── components/
-    ├── Header/
-    ├── Hero/
-    ├── Kingdoms/
-    └── FeaturedSpecies/
