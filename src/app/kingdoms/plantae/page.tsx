@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowUpRight, Search, Database, Globe2, Sprout, Layers } from "lucide-react";
 import { useGbif } from "@/hooks/useBbif";
+import SpecimenModal from "@/components/SpecimenModal";
+
 
 export default function PlantaePage() {
     const { getPlantaeSpecimens } = useGbif();
@@ -52,7 +54,7 @@ export default function PlantaePage() {
 
     return (
         <main className="min-h-screen bg-leaf-bg text-leaf-text">
-            {/* Hero Section */}
+            <SpecimenModal />
             <div className="relative min-h-[520px] overflow-hidden border-b border-leaf-border">
                 <Image
                     src="/Plantae.webp"
