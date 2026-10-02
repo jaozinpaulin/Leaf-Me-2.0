@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowUpRight, Search } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Search, Database, Globe2, Sprout, Layers } from "lucide-react";
 import { useGbif } from "@/hooks/useBbif";
 
 export default function PlantaePage() {
@@ -22,15 +22,44 @@ export default function PlantaePage() {
         loadSpecimens();
     }, [getPlantaeSpecimens]);
 
+    // Dados estatísticos para os cards em 2x2 com ícones grandes
+    const kingdomStats = [
+        {
+            title: "Total Cataloged",
+            value: "350K+",
+            description: "Species registered in global databases",
+            icon: Sprout,
+        },
+        {
+            title: "Countries & Regions",
+            value: "195+",
+            description: "With active botanical observations",
+            icon: Globe2,
+        },
+        {
+            title: "Taxonomic Families",
+            value: "450+",
+            description: "Classified botanical groups",
+            icon: Layers,
+        },
+        {
+            title: "Specimens Indexed",
+            value: "15M+",
+            description: "Digital records and herbarium sheets",
+            icon: Database,
+        },
+    ];
+
     return (
         <main className="min-h-screen bg-leaf-bg text-leaf-text">
-            <section className="relative min-h-[520px] overflow-hidden border-b border-leaf-border">
+            {/* Hero Section */}
+            <div className="relative min-h-[520px] overflow-hidden border-b border-leaf-border">
                 <Image
                     src="/Plantae.webp"
                     alt="Plantae"
                     fill
                     priority
-                    className="object-cover opacity-40"
+                    className="object-cover opacity-30"
                 />
                 <div className="absolute inset-0 bg-leaf-bg/60" />
 
@@ -47,7 +76,7 @@ export default function PlantaePage() {
                         </Link>
                         <Link
                             href="/"
-                            className="flex items-center gap-1.5 text-xs text-leaf-muted transition hover:text-leaf-text"
+                            className="flex items-center gap-1.5 text-xs text-leaf-muted transition-colors hover:text-leaf-text"
                         >
                             <ArrowLeft size={14} />
                             Back
@@ -67,7 +96,7 @@ export default function PlantaePage() {
                             Explore plant species, taxonomy and biodiversity observations from around the world.
                         </p>
 
-                        <div className="mx-auto mt-6 flex h-11 max-w-md items-center rounded-xl border border-leaf-border bg-leaf-bg/50 px-4 backdrop-blur-sm">
+                        <div className="mx-auto mt-6 flex h-11 max-w-md items-center rounded-xl border border-leaf-border bg-leaf-bg/50 px-4">
                             <Search size={16} className="mr-3 shrink-0 text-leaf-muted" />
                             <input
                                 type="text"
@@ -77,20 +106,10 @@ export default function PlantaePage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section className="px-6 py-16 lg:px-12 border-b border-leaf-border">
-                <div className="mx-auto max-w-7xl">
-                    <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
-                        Life rooted in place.
-                    </h2>
-                    <p className="mt-4 max-w-2xl text-sm leading-relaxed text-leaf-muted">
-                        From forests and flowering plants to ancient lineages, Plantae represents one of the major branches of life on Earth.
-                    </p>
-                </div>
-            </section>
-
-            <section className="px-6 py-16 lg:px-12 border-b border-leaf-border">
+            {/* Plant Specimens Section */}
+            <div className="px-6 py-16 lg:px-12 border-b border-leaf-border">
                 <div className="mx-auto max-w-7xl">
                     <div className="flex items-end justify-between gap-4">
                         <div>
@@ -100,7 +119,7 @@ export default function PlantaePage() {
                         </div>
                         <Link
                             href="/explore"
-                            className="hidden items-center gap-1.5 text-xs text-leaf-muted transition hover:text-leaf-text md:flex"
+                            className="hidden items-center gap-1.5 text-xs text-leaf-muted transition-colors hover:text-leaf-text md:flex"
                         >
                             Explore all <ArrowUpRight size={14} />
                         </Link>
@@ -114,7 +133,7 @@ export default function PlantaePage() {
                             return (
                                 <article
                                     key={specimen.key ?? index}
-                                    className="overflow-hidden rounded-xl border border-leaf-border bg-leaf-surface flex flex-col justify-between"
+                                    className="overflow-hidden rounded-xl border border-leaf-border bg-leaf-surface flex flex-col justify-between transition-colors hover:border-leaf-border/80"
                                 >
                                     <div className="relative aspect-[16/10] bg-leaf-bg">
                                         {image ? (
@@ -183,51 +202,70 @@ export default function PlantaePage() {
                         </div>
                     )}
                 </div>
-            </section>
+            </div>
 
-            <section className="px-6 py-16 lg:px-12 border-b border-leaf-border">
-                <div className="mx-auto max-w-7xl">
-                    <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
-                        A kingdom of branches.
-                    </h2>
-
-                    <div className="mt-8 grid gap-3 md:grid-cols-2">
-                        {["Angiosperms", "Gymnosperms", "Ferns & allies", "Bryophytes"].map((group, index) => (
-                            <Link
-                                key={group}
-                                href="#"
-                                className="flex items-center justify-between rounded-xl border border-leaf-border bg-leaf-surface px-5 py-4 transition hover:border-leaf-accent"
-                            >
-                                <div className="flex items-center gap-4">
-                                    <span className="font-mono text-[9px] text-leaf-muted">
-                                        0{index + 1}
-                                    </span>
-                                    <span className="text-xs font-medium">
-                                        {group}
-                                    </span>
-                                </div>
-                                <ArrowUpRight size={14} className="text-leaf-muted" />
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="px-6 py-16 lg:px-12">
-                <div className="mx-auto max-w-7xl flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div>
-                        <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
-                            Continue exploring Plantae.
+            {/* Global Botanical Metrics Section (Layout 2x2 com cards bem arredondados e ícones grandes) */}
+            <div className="px-6 py-16 lg:px-12 border-b border-leaf-border">
+                <div className="mx-auto max-w-5xl">
+                    <div className="text-center max-w-xl mx-auto mb-10">
+                        <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
+                            Global botanical metrics.
                         </h2>
+                        <p className="mt-2 text-sm text-leaf-muted">
+                            Overview of key data metrics tracked across worldwide ecosystems.
+                        </p>
                     </div>
-                    <Link
-                        href="/explore"
-                        className="inline-flex items-center gap-2 text-xs text-leaf-muted transition hover:text-leaf-text"
-                    >
-                        Explore biodiversity <ArrowUpRight size={14} />
-                    </Link>
+
+                    <div className="grid gap-6 md:grid-cols-2">
+                        {kingdomStats.map((stat) => {
+                            const IconComponent = stat.icon;
+                            return (
+                                <div
+                                    key={stat.title}
+                                    className="rounded-3xl border border-leaf-border bg-leaf-surface p-8 flex items-center justify-between gap-6 transition-colors hover:border-leaf-border/80"
+                                >
+                                    <div className="flex-1">
+                                        <span className="font-mono text-[10px] uppercase tracking-widest text-leaf-muted block mb-1">
+                                            {stat.title}
+                                        </span>
+                                        <p className="text-4xl font-semibold tracking-tight text-leaf-text">
+                                            {stat.value}
+                                        </p>
+                                        <p className="mt-2 text-xs text-leaf-muted">
+                                            {stat.description}
+                                        </p>
+                                    </div>
+                                    <div className="p-4 rounded-2xl bg-leaf-bg border border-leaf-border text-leaf-accent shrink-0">
+                                        <IconComponent size={36} strokeWidth={1.5} />
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
-            </section>
+            </div>
+
+            {/* Bottom CTA Section */}
+            <div className="px-6 py-16 lg:px-12">
+                <div className="mx-auto max-w-7xl">
+                    <div className="bg-leaf-surface border border-leaf-border rounded-2xl p-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div>
+                            <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
+                                Continue exploring Plantae.
+                            </h2>
+                            <p className="mt-1 text-xs text-leaf-muted">
+                                Access detailed records and broader taxonomy datasets.
+                            </p>
+                        </div>
+                        <Link
+                            href="/explore"
+                            className="inline-flex items-center gap-2 rounded-xl border border-leaf-border bg-leaf-bg px-5 py-3 text-xs font-medium text-leaf-text transition-colors hover:bg-leaf-surface hover:border-leaf-muted"
+                        >
+                            Explore biodiversity <ArrowUpRight size={14} />
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </main>
     );
 }
