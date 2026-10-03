@@ -12,19 +12,16 @@ const kingdoms = [
         name: "Animalia",
         division: "Chordata",
         catalog: "2026.09 — AN",
-        color: "#2563eb",
     },
     {
         name: "Plantae",
         division: "Tracheophyta",
         catalog: "2026.09 — TR",
-        color: "#059669",
     },
     {
         name: "Fungi",
         division: "Basidiomycota",
         catalog: "2026.09 — FU",
-        color: "#d97706",
     },
 ];
 
@@ -43,7 +40,7 @@ export default function KingdomDonut({ kingActive }: KingdomDonutProps) {
 
     return (
         <div className="relative flex items-center justify-center">
-            <div className="relative h-96 w-96 flex items-center justify-center">
+            <div className="relative h-72 w-72 flex items-center justify-center">
                 <svg
                     viewBox="0 0 200 200"
                     className="absolute inset-0 h-full w-full -rotate-90 overflow-visible"
@@ -57,21 +54,20 @@ export default function KingdomDonut({ kingActive }: KingdomDonutProps) {
                                 cy="100"
                                 r="72"
                                 fill="none"
-                                stroke={isActive ? kingdom.color : "#27272a"}
-                                strokeWidth={isActive ? 38 : 14}
+                                stroke={isActive ? "rgba(255, 255, 255, 0.95)" : "rgba(255, 255, 255, 0.12)"}
+                                strokeWidth={isActive ? 5 : 3}
                                 strokeDasharray={strokeDasharray}
                                 strokeDashoffset={getOffset(index)}
-                                strokeLinecap="round"
-                                className={`transition-all duration-700 ease-in-out ${isActive ? "opacity-100" : "opacity-40"
-                                    }`}
+                                strokeLinecap="square"
+                                className="transition-all duration-700 ease-in-out"
                             />
                         );
                     })}
                 </svg>
 
                 <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center z-10">
-                    <span className="font-serif text-2xl font-medium tracking-wide text-zinc-100 transition-all duration-500">
-                        {activeKingdom.name}
+                    <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.25em] text-white/60">
+                        {activeKingdom.division}
                     </span>
                 </div>
             </div>
