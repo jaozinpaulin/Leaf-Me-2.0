@@ -26,10 +26,9 @@ export default function ExploreLife() {
     }, []);
 
     return (
-        <section className="border-t border-leaf-border/40 bg-leaf-bg px-6 py-28 md:px-10 overflow-hidden">
+        <section className="border-t border-white/10 bg-black px-6 py-28 md:px-10 overflow-hidden text-white">
             <div className="mx-auto max-w-7xl">
-
-                <h2 className="font-display mb-16 text-center text-3xl tracking-tight text-leaf-text md:text-4xl">
+                <h2 className="font-display mb-16 text-center text-3xl tracking-tight text-white md:text-4xl">
                     A closer look at life.
                 </h2>
 
@@ -47,39 +46,40 @@ export default function ExploreLife() {
                                     : "lg:translate-y-0";
 
                         return (
-                            <article key={specimen.key}
-                                className={`group relative flex flex-col justify-between overflow-hidden border rounded-xl border-leaf-border/30 bg-leaf-surface/20 p-5 transition-all duration-300 hover:border-leaf-border hover:bg-leaf-surface/40 ${offsetStyle}`}
+                            <article
+                                key={specimen.key}
+                                className={`group relative flex flex-col justify-between overflow-hidden rounded-lg border border-white/10 bg-white/5 p-5 transition-all duration-300 hover:border-white/30 hover:bg-white/10 ${offsetStyle}`}
                             >
-                                <div className="aspect-[4/3] overflow-hidden bg-black/40 border border-leaf-border/30 relative rounded-xl mb-5">
+                                <div className="aspect-[4/3] overflow-hidden bg-black/50 border border-white/10 relative rounded-md mb-5">
                                     {image ? (
                                         <img
                                             src={image}
                                             alt={specimen.scientificName}
-                                            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                                            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90"
                                             onError={(event) => {
                                                 event.currentTarget.style.display = "none";
                                             }}
                                         />
                                     ) : (
-                                        <div className="flex h-full items-center justify-center font-mono text-xs uppercase tracking-widest text-leaf-muted">
+                                        <div className="flex h-full items-center justify-center font-mono text-xs uppercase tracking-widest text-white/40">
                                             No image
                                         </div>
                                     )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-30" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-40" />
                                 </div>
 
                                 <div className="flex items-end justify-between pt-2">
                                     <div>
-                                        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-leaf-muted/80">
+                                        <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.2em] text-white/50">
                                             {specimen.kingdom || "Specimen"}
                                         </p>
 
-                                        <h3 className="font-display text-lg italic text-leaf-text transition-colors group-hover:text-leaf-accent">
+                                        <h3 className="font-display text-lg italic text-white transition-colors group-hover:text-white/80">
                                             {specimen.scientificName}
                                         </h3>
                                     </div>
 
-                                    <div className="flex h-8 w-8 items-center justify-center rounded-full border border-leaf-border/40 bg-leaf-surface/30 text-leaf-muted transition-colors group-hover:border-leaf-border group-hover:text-leaf-text">
+                                    <div className="flex h-8 w-8 items-center justify-center rounded-none border border-white/20 bg-black/40 text-white/70 transition-colors group-hover:border-white/40 group-hover:text-white">
                                         <ArrowUpRight className="h-4 w-4" />
                                     </div>
                                 </div>
@@ -87,7 +87,6 @@ export default function ExploreLife() {
                         );
                     })}
                 </div>
-
             </div>
         </section>
     );
